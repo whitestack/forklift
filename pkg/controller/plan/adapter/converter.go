@@ -203,9 +203,12 @@ func makeConversionContainer(pvc *v1.PersistentVolumeClaim, srcFormat, dstFormat
 		Name:  "convert",
 		Image: base.Settings.VirtV2vImage,
 		SecurityContext: &v1.SecurityContext{
-			AllowPrivilegeEscalation: ptr.To(false),
+			AllowPrivilegeEscalation: ptr.To(true),
+			RunAsUser:                ptr.To , // root
+			RunAsGroup:               ptr.To , // opcional: grupo root
+			Privileged:               ptr.To(true),
 			Capabilities: &v1.Capabilities{
-				Drop: []v1.Capability{"ALL"},
+				Add: []v1.Capability{"ALL"}, // agrega todas las capabilities
 			},
 		},
 		Command: []string{"/usr/local/bin/image-converter"},
