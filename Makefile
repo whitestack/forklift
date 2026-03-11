@@ -1,5 +1,5 @@
-GOOS ?= $(shell go env GOOS)
-GOPATH ?= $(shell go env GOPATH)
+GOOS ?= $(shell go env GOOS 2>/dev/null || echo linux)
+GOPATH ?= $(shell go env GOPATH 2>/dev/null || echo $(HOME)/go)
 GOBIN ?= $(GOPATH)/bin
 # GO111MODULE is enabled by default in modern Go; uncomment to force
 # GO111MODULE = on
@@ -34,7 +34,8 @@ endif
 # Extract architecture from PLATFORM for image tag suffix
 # e.g., linux/amd64 -> amd64, linux/arm64 -> arm64
 PLATFORM_ARCH ?= $(shell echo $(PLATFORM) | cut -d'/' -f2)
-PLATFORM_SUFFIX := -$(PLATFORM_ARCH)
+# PLATFORM_SUFFIX := -$(PLATFORM_ARCH)
+PLATFORM_SUFFIX :=
 
 REGISTRY ?= quay.io
 REGISTRY_ORG ?= kubev2v
