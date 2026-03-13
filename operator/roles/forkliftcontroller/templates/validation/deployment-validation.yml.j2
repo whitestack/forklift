@@ -19,6 +19,7 @@ spec:
         app: {{ app_name }}
         service: {{ validation_service_name }}
     spec:
+      serviceAccountName: forklift-validation
       containers:
         - name: {{ validation_container_name }}
           image: {{ validation_image_fqin }}
