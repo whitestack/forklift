@@ -956,6 +956,7 @@ func (r *KubeVirt) createPodToBindPVCs(vm *plan.VMStatus, pvcNames []string) (er
 			GenerateName: r.getGeneratedName(vm) + "pvcinit-",
 		},
 		Spec: core.PodSpec{
+			ServiceAccountName: "forklift-pod-operations",
 			RestartPolicy: core.RestartPolicyNever,
 			Containers: []core.Container{
 				{
