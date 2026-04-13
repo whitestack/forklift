@@ -4,7 +4,6 @@
   group: forklift.konveyor.io
   kind: ForkliftController
   role: forkliftcontroller
-  reconcilePeriod: 5m
 #+kubebuilder:scaffold:watch
   finalizer:
     name: forklift.konveyor.io/finalizer
