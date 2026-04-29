@@ -1,8 +1,6 @@
 name: Validate Commit Messages
 
-on:
-  push:
-  pull_request:
+on: []
 
 jobs:
   validate-commits:
@@ -42,5 +40,4 @@ jobs:
         
         # Make script executable and run validation
         chmod +x ./scripts/validate-commits.sh
-        # Commit validations disabled
-        #./scripts/validate-commits.sh --range "$COMMIT_RANGE" --verbose
+        ./scripts/validate-commits.sh --range "$COMMIT_RANGE" --verbose
