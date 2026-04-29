@@ -444,9 +444,9 @@
     vars:
       webhook_state: "absent"
 
-  - name: "Remove console plugin"
-    k8s:
-      state: absent
-      definition: "{{ lookup('template', 'ui-plugin/console-plugin.yml.j2') }}"
+  #- name: "Remove console plugin"
+  #  k8s:
+  #    state: absent
+  #    definition: "{{ lookup('template', 'ui-plugin/console-plugin.yml.j2') }}"
 
   when: finalize is defined
