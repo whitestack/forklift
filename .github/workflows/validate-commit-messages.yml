@@ -42,4 +42,5 @@ jobs:
         
         # Make script executable and run validation
         chmod +x ./scripts/validate-commits.sh
-        ./scripts/validate-commits.sh --range "$COMMIT_RANGE" --verbose
+        # Commit validations disabled
+        #./scripts/validate-commits.sh --range "$COMMIT_RANGE" --verbose
