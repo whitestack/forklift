@@ -1754,6 +1754,7 @@ func createVddkCheckJob(plan *api.Plan) *batchv1.Job {
 				Spec: core.PodSpec{
 					SecurityContext: psc,
 					RestartPolicy:   core.RestartPolicyNever,
+					ServiceAccountName: "forklift-pod-operations",
 					InitContainers:  initContainers,
 					Containers: []core.Container{
 						{
