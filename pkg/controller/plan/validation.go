@@ -2041,4 +2041,3 @@ func (r *Reconciler) vmUsesVddk(storageMap *api.StorageMap, vsphereVM *vsphere.V
 
 	return false, nil
 }
-
