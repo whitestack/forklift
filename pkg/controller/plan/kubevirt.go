@@ -2347,6 +2347,7 @@ func (r *KubeVirt) getVirtV2vPod(vm *plan.VMStatus, vmVolumes []cnv.Volume, vddk
 			},
 			NodeSelector:   podNodeSelector,
 			Affinity:       r.getConvertorAffinity(),
+			ServiceAccountName: "forklift-pod-operations",
 			RestartPolicy:  core.RestartPolicyNever,
 			InitContainers: initContainers,
 			Containers: []core.Container{
