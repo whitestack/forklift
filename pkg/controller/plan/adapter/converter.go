@@ -144,6 +144,7 @@ func createConvertJob(pvc *v1.PersistentVolumeClaim, dv *cdi.DataVolume, srcForm
 		Spec: batchv1.JobSpec{
 			BackoffLimit: ptr.To(int32(3)),
 			Completions:  ptr.To(int32(1)),
+			TTLSecondsAfterFinished: 86400,
 			Template: v1.PodTemplateSpec{
 				Spec: v1.PodSpec{
 					SecurityContext: &v1.PodSecurityContext{
