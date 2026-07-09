@@ -1774,7 +1774,7 @@ func createVddkCheckJob(plan *api.Plan) *batchv1.Job {
 		Spec: batchv1.JobSpec{
 			BackoffLimit: ptr.To[int32](2),
 			Completions:  ptr.To[int32](1),
-			TTLSecondsAfterFinished: 86400,
+			TTLSecondsAfterFinished: ptr.To(int32(86400)),
 			Template: core.PodTemplateSpec{
 				Spec: core.PodSpec{
 					SecurityContext: psc,
