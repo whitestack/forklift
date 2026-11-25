@@ -2504,6 +2504,11 @@ spec:
                         vsphere:
                           The managed object ID.
                       type: string
+                    cpuModel:
+                      description: |-
+                        CPUModel sets the CPU model of the target VM (domain.cpu.model), keeping the source CPU topology and memory.
+                        Ignored when InstanceType is set.
+                      type: string
                     instanceType:
                       description: Selected InstanceType that will override the VM
                         properties.
@@ -3087,6 +3092,11 @@ spec:
                             The object ID.
                             vsphere:
                               The managed object ID.
+                          type: string
+                        cpuModel:
+                          description: |-
+                            CPUModel sets the CPU model of the target VM (domain.cpu.model), keeping the source CPU topology and memory.
+                            Ignored when InstanceType is set.
                           type: string
                         instanceType:
                           description: Selected InstanceType that will override the

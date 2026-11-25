@@ -56,6 +56,10 @@ type VM struct {
 	// Selected InstanceType that will override the VM properties.
 	// +optional
 	InstanceType string `json:"instanceType,omitempty"`
+	// CPUModel sets the CPU model of the target VM (domain.cpu.model), keeping the source CPU topology and memory.
+	// Ignored when InstanceType is set.
+	// +optional
+	CPUModel string `json:"cpuModel,omitempty"`
 	// PVCNameTemplate is a template for generating PVC names for VM disks.
 	// Generated names must be valid DNS-1123 labels (lowercase alphanumerics, '-' allowed, max 63 chars).
 	// It follows Go template syntax and has access to provider-specific variables.

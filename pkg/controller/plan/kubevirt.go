@@ -1716,6 +1716,7 @@ func (r *KubeVirt) virtualMachine(vm *plan.VMStatus, sortVolumesByLibvirt bool) 
 	if err != nil {
 		return
 	}
+	r.setCPUModel(vm, object)
 
 	return
 }
@@ -1755,6 +1756,17 @@ func (r *KubeVirt) setInstanceType(vm *plan.VMStatus, object *cnv.VirtualMachine
 	}
 	object.Spec.Instancetype = &cnv.InstancetypeMatcher{Name: vm.InstanceType, Kind: kind}
 	return
+}
+
+func (r *KubeVirt) setCPUModel(vm *plan.VMStatus, object *cnv.VirtualMachine) {
+	if vm.CPUModel == "" || vm.InstanceType != "" || object.Spec.Template == nil {
+		return
+	}
+	domain := &object.Spec.Template.Spec.Domain
+	if domain.CPU == nil {
+		domain.CPU = &cnv.CPU{}
+	}
+	domain.CPU.Model = vm.CPUModel
 }
 
 func (r *KubeVirt) setVmLabels(object *cnv.VirtualMachine) (err error) {
